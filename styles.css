@@ -5,116 +5,117 @@
 }
 
 body {
-  background: radial-gradient(circle at top, #111 0%, #000 70%);
   height: 100vh;
+  background: radial-gradient(circle at top, #1a1a1a 0%, #000 70%);
+  font-family: 'Cormorant Garamond', serif;
   overflow: hidden;
+  color: #f4f2ee;
 }
 
-/* Scene */
-.scene {
+/* Hero section */
+.hero {
   position: relative;
-  width: 100%;
+  z-index: 2;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  animation: fadeUp 1.6s ease forwards;
 }
 
-/* Balloon layer */
-.balloon-layer {
+/* Headline */
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+/* Subtle subtitle */
+.subtitle {
+  font-size: 1.4rem;
+  opacity: 0.8;
+  margin-bottom: 48px;
+}
+
+/* Call-to-action button */
+.cta {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 14px 38px;
+  border-radius: 999px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease;
+}
+
+.cta:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-2px);
+}
+
+/* Balloons (decorative only) */
+.balloons {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   z-index: 1;
+  pointer-events: none;
 }
 
 .balloon {
   position: absolute;
-  width: 90px;
-  bottom: -150px;
-  animation: floatUp linear infinite;
-  opacity: 0.95;
+  bottom: -200px;
+  width: 140px;
+  opacity: 0.25;
 }
 
-/* Individual balloon positions & speeds */
-.b1 { left: 5%;  animation-duration: 18s; }
-.b2 { left: 18%; animation-duration: 22s; width: 80px; }
-.b3 { left: 32%; animation-duration: 20s; }
-.b4 { left: 48%; animation-duration: 26s; width: 100px; }
-.b5 { left: 62%; animation-duration: 21s; }
-.b6 { left: 75%; animation-duration: 24s; width: 85px; }
-.b7 { left: 88%; animation-duration: 19s; }
+.left {
+  left: 6%;
+}
+
+.right {
+  right: 8%;
+}
+
+.slow {
+  animation: floatUp 26s linear infinite;
+}
+
+.slower {
+  animation: floatUp 34s linear infinite;
+}
 
 @keyframes floatUp {
   from {
-    transform: translateY(0) translateX(0);
+    transform: translateY(0);
   }
   to {
-    transform: translateY(-130vh) translateX(20px);
+    transform: translateY(-140vh);
   }
 }
 
-/* Content */
-.content {
-  position: absolute;
-  z-index: 3;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  color: #f8f6f2;
-}
-
-/* Text styling */
-h1 {
-  font-family: 'Cinzel', serif;
-  letter-spacing: 2px;
-  margin-bottom: 40px;
-  animation: fadeIn 2s ease forwards;
-}
-
-.line1 {
-  display: block;
-  font-size: 2.8rem;
-}
-
-.line2 {
-  display: block;
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-size: 1.8rem;
-  margin-top: 12px;
-  opacity: 0.9;
-}
-
-/* Button */
-.coffee-btn {
-  background: linear-gradient(135deg, #6f4e37, #8b5e3c);
-  color: #fff;
-  border: none;
-  border-radius: 50px;
-  padding: 14px 36px;
-  font-size: 1.2rem;
-  cursor: pointer;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-  transition: all 0.3s ease;
-}
-
-.coffee-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 15px 40px rgba(255,255,255,0.15);
-}
-
-@keyframes fadeIn {
+/* Entrance animation */
+@keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translate(-50%, -55%);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
-    transform: translate(-50%, -50%);
+    transform: translateY(0);
   }
 }
 
-/* Mobile polish */
+/* Mobile */
 @media (max-width: 600px) {
-  .line1 { font-size: 2rem; }
-  .line2 { font-size: 1.4rem; }
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+  .subtitle {
+    font-size: 1.2rem;
+  }
 }
